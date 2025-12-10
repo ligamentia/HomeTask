@@ -1,0 +1,22 @@
+# Xcode
+DerivedData/
+build/
+*.xcworkspace/xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# Swift Package Manager
+.swiftpm/
+Packages/
+.build/
+
+# Logs
+*.log
+
+# macOS
+.DS_Store
+
+# User-specific files
+*.swp
+*.env
