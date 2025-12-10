@@ -7,39 +7,26 @@
 
 import Foundation
 
-func displayMainMenu() {
-    print("""
-|1. Start new game |  
-|2. Show history |  
-|3. Exit |
-""")
-}
-
-func startNewGame() {
-    print("Do you want start new game?")
-}
-
- func showHistory() {
-     print("You score history:")
-}
-
-func exitGame() {
-    print("Goodbye!")
-}
+let mainMenu = MainMenu()
 
 func runGame() {
-   displayMainMenu()
+    mainMenu.displayMainMenu()
     while let choice = readLine() {
-        switch choice {
-        case "1":
-            startNewGame()
-        case "2":
-            showHistory()
-        case "3":
-            exitGame()
-            return
-        default:
+        guard let intValue = Int(choice),
+              let choice = GameMenu(rawValue: intValue)
+        else {
             print("Invalid choice. Please try again.")
+            continue
+        }
+
+        switch choice {
+        case .startNewGame:
+            mainMenu.startNewGame()
+        case .showHistory:
+            mainMenu.showHistory()
+        case .exit:
+            mainMenu.exitGame()
+            return
         }
     }
 }
