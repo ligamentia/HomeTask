@@ -19,7 +19,7 @@ class MainMenu {
         let randomInt = Int.random(in: 1...20)
         print("\(randomInt)")
         while amountOfAttempts > 0 {
-            print("Guess number from 1 to 20: ")
+            print(Strings.guessTitle)
             
             guard let intValue = readLine(),
                   let attemp = Int(intValue)
@@ -44,7 +44,7 @@ class MainMenu {
     }
 
      func showHistory() {
-         print("You score history:")
+         print(Strings.showHistoryTitle)
     }
 
     func exitGame() {
