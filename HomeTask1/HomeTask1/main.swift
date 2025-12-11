@@ -22,6 +22,7 @@ func runGame() {
         switch choice {
         case .startNewGame:
             mainMenu.startNewGame()
+            return
         case .showHistory:
             mainMenu.showHistory()
         case .exit:
