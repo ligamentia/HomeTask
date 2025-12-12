@@ -5,6 +5,7 @@ build/
 *.xcuserstate
 *.xccheckout
 *.xcscmblueprint
+**/xcuserdata/
 
 # Swift Package Manager
 .swiftpm/
