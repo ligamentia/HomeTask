@@ -4,9 +4,9 @@
 //
 //  Created by Macbook on 09/12/2025.
 //
+import Foundation
 
-
-class MainMenu {
+final class MainMenu {
     var amountOfAttempts = 3
     
     func displayMainMenu() {
@@ -17,7 +17,7 @@ class MainMenu {
 
     func startNewGame() {
         let randomInt = Int.random(in: 1...20)
-        print("\(randomInt)")
+//        print("\(randomInt)")
         while amountOfAttempts > 0 {
             print(Strings.guessTitle)
             
@@ -30,6 +30,7 @@ class MainMenu {
             
             if attemp == randomInt {
                 exitGame(resultMessage: Strings.winTitle)
+                UserDefaults.standard.set(attemp, forKey: "success")
                 return
             }
             else {
@@ -44,7 +45,8 @@ class MainMenu {
     }
 
      func showHistory() {
-         print(Strings.showHistoryTitle)
+         let number = UserDefaults.standard.integer(forKey: "success")
+         print(Strings.showHistoryTitle(for: number))
     }
 
     func exitGame() {
