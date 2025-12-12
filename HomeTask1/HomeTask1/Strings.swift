@@ -9,4 +9,14 @@ import Foundation
 
 struct Strings {
     static let goodbye = "Goodbye!"
+    static let invalidInput = "Invalid input"
+    static let winTitle = "You win!"
+    static let guessTitle = "Guess the number from 1 to 20: "
+    static let showHistoryTitle = "You score history: "
+    static func loseTitle(for amountOfAttempts: Int) -> String {
+        "You are wrong. You have \(amountOfAttempts) attempts left. Try again."
+    }
+    static func gameOver(correctNumber: Int) -> String {
+        "Game over! The correct number was \(correctNumber)"
+    }
 }

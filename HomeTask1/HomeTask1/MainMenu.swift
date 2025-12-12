@@ -3,10 +3,10 @@
 //  HomeTask1
 //
 //  Created by Macbook on 09/12/2025.
-//
 
 
-class MainMenu {
+final class MainMenu {
+    private var amountOfAttempts = 3
     
     func displayMainMenu() {
         let gameMenu = GameMenu.allCases.map { $0.name } // $0 - обращение к каждому элементу вместо element in
@@ -15,15 +15,43 @@ class MainMenu {
     }
 
     func startNewGame() {
-        print("Do you want start new game?")
+        let randomInt = Int.random(in: 1...20)
+//        print("\(randomInt)")
+        while amountOfAttempts > 0 {
+            print(Strings.guessTitle)
+            
+            guard let userInput = readLine(),
+                  let attemp = Int(userInput)
+            else {
+                print(Strings.invalidInput)
+                continue
+            }
+            
+            if attemp == randomInt {
+                exitGame(resultMessage: Strings.winTitle)
+                return
+            }
+            else {
+                amountOfAttempts -= 1
+                print(Strings.loseTitle(for: amountOfAttempts))
+                if amountOfAttempts == 0 {
+                    exitGame(resultMessage: Strings.gameOver(correctNumber: randomInt))
+                    return
+                }
+            }
+        }
     }
 
      func showHistory() {
-         print("You score history:")
+         print(Strings.showHistoryTitle)
     }
 
-    func exitGame() {
+    func exitProgramm() {
         print(Strings.goodbye)
     }
     
+    private func exitGame(resultMessage: String) {
+        amountOfAttempts = 3
+        print(resultMessage)
+    }
 }
