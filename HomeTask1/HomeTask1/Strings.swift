@@ -10,7 +10,7 @@ import Foundation
 struct Strings {
     static let goodbye = "Goodbye!"
     static let invalidInput = "Invalid input"
-    static let winTitle = "You win!"
+    static let winTitle = "Congratulations"
     static let guessTitle = "Guess the number from 1 to 20: "
     static let showHistory = "You score history: "
     static func showHistoryTitle(for succeses: Int) -> String {
