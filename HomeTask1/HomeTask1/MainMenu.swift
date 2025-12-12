@@ -16,7 +16,7 @@ final class MainMenu {
 
     func startNewGame() {
         let randomInt = Int.random(in: 1...20)
-        print("\(randomInt)")
+//        print("\(randomInt)")
         while amountOfAttempts > 0 {
             print(Strings.guessTitle)
             
