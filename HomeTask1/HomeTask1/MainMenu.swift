@@ -7,7 +7,8 @@
 import Foundation
 
 final class MainMenu {
-    var amountOfAttempts = 3
+    private var amountOfAttempts = 3
+    private let userDefaults = UserDefaults.standard
     
     func displayMainMenu() {
         let gameMenu = GameMenu.allCases.map { $0.name } // $0 - обращение к каждому элементу вместо element in
@@ -20,7 +21,6 @@ final class MainMenu {
 //        print("\(randomInt)")
         while amountOfAttempts > 0 {
             print(Strings.guessTitle)
-            
             guard let intValue = readLine(),
                   let attemp = Int(intValue)
             else {
@@ -30,10 +30,9 @@ final class MainMenu {
             
             if attemp == randomInt {
                 exitGame(resultMessage: Strings.winTitle)
-                UserDefaults.standard.set(attemp, forKey: "success")
+                userDefaults.set(attemp, forKey: "success")
                 return
-            }
-            else {
+            } else {
                 amountOfAttempts -= 1
                 print(Strings.loseTitle(for: amountOfAttempts))
                 if amountOfAttempts == 0 {
@@ -45,7 +44,7 @@ final class MainMenu {
     }
 
      func showHistory() {
-         let number = UserDefaults.standard.integer(forKey: "success")
+         let number = userDefaults.integer(forKey: "success")
          print(Strings.showHistoryTitle(for: number))
     }
 
