@@ -26,7 +26,7 @@ func runGame() {
         case .showHistory:
             mainMenu.showHistory()
         case .exit:
-            mainMenu.exitGame()
+            mainMenu.exitProgramm()
             return
         }
     }
