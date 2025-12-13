@@ -3,10 +3,12 @@
 //  HomeTask1
 //
 //  Created by Macbook on 09/12/2025.
-
+//
+import Foundation
 
 final class MainMenu {
     private var amountOfAttempts = 3
+    private let userDefaults = UserDefaults.standard
     
     func displayMainMenu() {
         let gameMenu = GameMenu.allCases.map { $0.name } // $0 - обращение к каждому элементу вместо element in
@@ -19,9 +21,8 @@ final class MainMenu {
 //        print("\(randomInt)")
         while amountOfAttempts > 0 {
             print(Strings.guessTitle)
-            
-            guard let userInput = readLine(),
-                  let attemp = Int(userInput)
+            guard let intValue = readLine(),
+                  let attemp = Int(intValue)
             else {
                 print(Strings.invalidInput)
                 continue
@@ -29,9 +30,9 @@ final class MainMenu {
             
             if attemp == randomInt {
                 exitGame(resultMessage: Strings.winTitle)
+                userDefaults.set(attemp, forKey: "success")
                 return
-            }
-            else {
+            } else {
                 amountOfAttempts -= 1
                 print(Strings.loseTitle(for: amountOfAttempts))
                 if amountOfAttempts == 0 {
@@ -43,10 +44,11 @@ final class MainMenu {
     }
 
      func showHistory() {
-         print(Strings.showHistoryTitle)
+         let number = userDefaults.integer(forKey: "success")
+         print(Strings.showHistoryTitle(for: number))
     }
 
-    func exitProgramm() {
+    func exitGame() {
         print(Strings.goodbye)
     }
     
@@ -54,4 +56,5 @@ final class MainMenu {
         amountOfAttempts = 3
         print(resultMessage)
     }
+    
 }
