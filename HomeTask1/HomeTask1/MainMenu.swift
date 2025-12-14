@@ -30,13 +30,14 @@ final class MainMenu {
             
             if attemp == randomInt {
                 exitGame(resultMessage: Strings.winTitle)
-                userDefaults.set(attemp, forKey: "success")
+                userDefaults.set(attemp, forKey: "succeses")
                 return
             } else {
                 amountOfAttempts -= 1
                 print(Strings.loseTitle(for: amountOfAttempts))
                 if amountOfAttempts == 0 {
                     exitGame(resultMessage: Strings.gameOver(correctNumber: randomInt))
+                    userDefaults.set(attemp, forKey: "failure")
                     return
                 }
             }
@@ -44,11 +45,12 @@ final class MainMenu {
     }
 
      func showHistory() {
-         let number = userDefaults.integer(forKey: "success")
-         print(Strings.showHistoryTitle(for: number))
+         let successNumbers = userDefaults.integer(forKey: "success")
+         let failureNumbers = userDefaults.integer(forKey: "failure")
+         print(Strings.showHistoryTitle(succeses: successNumbers, failure: failureNumbers))
     }
 
-    func exitGame() {
+    func exitProgramm() {
         print(Strings.goodbye)
     }
     
