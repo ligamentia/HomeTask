@@ -13,9 +13,12 @@ struct Strings {
     static let winTitle = "Congratulations"
     static let guessTitle = "Guess the number from 1 to 20: "
     static let showHistory = "You score history: "
-    static func showHistoryTitle(for succeses: Int) -> String {
-        "\(succeses)"
-    }
+    static func showHistoryTitle(succeses: Int, failure: Int) -> String {
+       """
+       success: \(succeses)
+       failure: \(failure)
+       """
+       }
     static func loseTitle(for amountOfAttempts: Int) -> String {
         "You are wrong. You have \(amountOfAttempts) attempts left. Try again."
     }
